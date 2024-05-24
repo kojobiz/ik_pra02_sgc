@@ -1,0 +1,32 @@
+// ======================================
+// Config（Mixin・定数の定義など）
+// ======================================
+@import "config/setting";  //変数の定義など
+@import "config/mixin";      //ミックスインの定義
+
+
+// ======================================
+// Main（基本となるスタイル）
+// ======================================
+@import "main/base";
+@import "main/components";
+@import "main/layout";
+@import "main/header";
+@import "main/sidebar";
+@import "main/footer";
+@import "main/form";
+
+
+// ======================================
+// Pages（ページ毎のスタイル）
+// ======================================
+@import "pages/common";
+@import "pages/lower";
+
+
+// ======================================
+// Responsive（レスポンシブ用）
+// ======================================
+@import "responsive/pc";
+@import "responsive/tablet";
+@import "responsive/sp";

@@ -1,0 +1,49 @@
+
+// ======================================
+// フッター
+// ======================================
+.m-footer {
+  &__inner {
+    padding-bottom: 3.5rem;
+  }
+
+  &__company {
+    padding-left: 3.0rem;
+    color: #30554c;
+
+    &--name {
+      margin-bottom: 2.0rem;
+      font-weight: 700;
+      font-size: 2.3rem;
+    }
+
+    &--detail {
+      p {
+        line-height: calc(26 / 16);
+      }
+    }
+  }
+
+  &__copyright {
+    padding: 1.7rem 2.0rem;
+    background-color: #30554c;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+  }
+}
+
+// #pageTop {
+//   width: 6.4rem;
+//   height: 6.4rem;
+//   position: absolute;
+//   right: 0;
+//   bottom: .8rem;
+//   // border: 1px solid #050505;
+//   border-radius: 50%;
+//   background-color: $keyColor;
+//   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228%22%20height%3D%226%22%3E%3Cpath%20fill%3D%22%23FFF%22%20fill-rule%3D%22evenodd%22%20d%3D%22m4%200%203.469%206H.531L4%200Z%22%2F%3E%3C%2Fsvg%3E");
+//   background-position: center;
+//   background-size: 1.6rem 1.2rem;
+//   background-repeat: no-repeat;
+// }

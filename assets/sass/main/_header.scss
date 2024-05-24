@@ -1,0 +1,177 @@
+
+// ======================================
+// ヘッダー
+// ======================================
+.fixed {
+  .m-header {
+    opacity: 1;
+  }
+}
+
+.m-header {
+  width: 100%;
+  padding: 1.0rem 5.0rem 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  &.is-show {
+    background-color: rgba(#fff, .75);
+  }
+
+  &__title {
+    line-height: 0;
+    a {
+      display: block;
+    }
+    img {
+      width: 43.0rem;
+    }
+  }
+
+  &__tel {
+    margin-bottom: 1.0rem;
+    text-align: right;
+    &--inner {
+      display: inline-flex;
+      flex-direction: column;
+      color: $orange;
+      > * {
+        display: inline-block;
+      }
+    }
+    &--num {
+      color: $orange;
+      font-weight: 700;
+      font-size: 2.8rem;
+      line-height: 1.2;
+    }
+    &--reception {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__navi {
+    ul {
+      display: flex;
+      gap: 0 5.0rem;
+    }
+    a {
+      white-space: nowrap;
+    }
+
+    &--logo {
+      display: none;
+    }
+
+    &--request {
+      display: none;
+    }
+
+    &--tel {
+      margin-bottom: 3.0rem;
+      color: #30554c;
+    }
+
+    &--num {
+      color: #30554c;
+      font-weight: 700;
+      font-size: 5.4rem;
+      line-height: 1;
+      &::before {
+        content: "TEL";
+        margin-right: 1.5rem;
+      }
+    }
+
+    &--reception {
+      letter-spacing: .035em;
+      font-weight: 500;
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+  }
+}
+
+// ======================================
+// ハンバーガーボタン
+// ======================================
+
+#hamburger-menu {
+  width: 9.0rem;
+  height: 6.5rem;
+  position: fixed;
+  top: 1.7rem;
+  right: 3.4rem;
+  z-index: 99;
+  display: none;
+  border-radius: 3.2rem;
+  background-color: $orange;
+  &.open {
+    width: 2.64rem;
+    height: 2.64rem;
+    top: 2.7rem;
+    right: 2.8rem;
+    border-radius: unset;
+    background-color: unset;
+  }
+}
+
+#nav-toggle {
+  width: 4.0rem;
+  height: 2.7rem;
+  margin: 0;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  div {
+    position: relative;
+  }
+  span {
+    width: 100%;
+    height: .3rem;
+    position: absolute;
+    display: block;
+    background: #fff;
+    transition: .35s ease-in-out;
+    &:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+    &:nth-child(2) {
+      top: 1.2rem;
+      left: 0;
+    }
+    &:nth-child(3) {
+      top: 2.4rem;
+      right: 0;
+    }
+  }
+}
+
+// ハンバーガーボタン展開時
+.open {
+  // #nav-toggle 切り替えアニメーション
+  background-color: #fff;
+  #nav-toggle {
+    span {
+      background: #000;
+      &:nth-child(1) {
+        top: 1.25rem;
+        transform: rotate(315deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+        transform: rotate(360deg);
+      }
+      &:nth-child(3) {
+        top: 1.25rem;
+        transform: rotate(-315deg);
+      }
+    }
+  }
+}

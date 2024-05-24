@@ -1,0 +1,367 @@
+
+// ======================================
+// フォーム 設定
+// ======================================
+
+//Chromeの青枠をリセット
+*:focus {
+  outline: none;
+}
+
+input {
+  //プレースホルダーテキストカラー指定
+  &::-webkit-input-placeholder {
+    color: $placeholder_color;
+  }
+  &:-ms-input-placeholder {
+    color: $placeholder_color;
+  }
+  &::-moz-placeholder {
+    color: $placeholder_color;
+  }
+  // Chrome オートフィル時の背景色
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  }
+}
+
+.l-textarea {
+  vertical-align: bottom;
+  //プレースホルダーテキストカラー指定
+  &::-webkit-input-placeholder {
+    color: $placeholder_color;
+  }
+  &:-ms-input-placeholder {
+    color: $placeholder_color;
+  }
+  &::-moz-placeholder {
+    color: $placeholder_color;
+  }
+  // Chrome オートフィル時の背景色
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  }
+}
+
+
+// ======================================
+// セレクトボックス
+// ======================================
+.l-select {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20version%3D%221.1%22%20id%3D%22select_arr%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2011.4%206.2%22%20style%3D%22enable-background%3Anew%200%200%2011.4%206.2%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%20.st0%7Bfill%3Anone%3Bstroke%3A%23BFBFBF%3Bstroke-linecap%3Around%3Bstroke-linejoin%3Around%3B%7D%3C%2Fstyle%3E%3Cpath%20id%3D%22path01%22%20class%3D%22st0%22%20d%3D%22M10.7%2C0.6l-5%2C5l-5-5%22%2F%3E%3C%2Fsvg%3E");
+  background-position: right 20px center;
+  background-size: 16px;
+  background-repeat: no-repeat;
+
+  appearance: none;
+  &::-ms-expand {
+    display: none;
+  }
+  &.form_control {
+    padding: 12px 24px 12px 10px;
+  }
+}
+
+
+// ======================================
+// ラジオボタン
+// ======================================
+.l-radio {
+  &__wrap {
+    &.horizon {
+      margin-bottom: -20px;
+      padding-top: 18px;
+      padding-bottom: 18px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      .radio {
+        margin-right: 20px;
+        margin-bottom: 20px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &.vertical {
+      // padding-top: 10px;
+      // padding-bottom: 10px;
+      .radio {
+        &:not(:last-child) {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+
+    + .radio-label {
+      display: flex;
+      align-items: center;
+
+// font-size: 18px;
+      line-height: 1;
+
+      &:before {
+        content: "";
+        width: 18px;
+        height: 18px;
+        margin-right: .5em;
+        position: relative;
+        top: 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 100%;
+        vertical-align: top;
+        text-align: center;
+        cursor: pointer;
+        transition: all 250ms ease;
+      }
+    }
+    &:checked {
+      + .radio-label {
+        &:before {
+          border-color: $main_color;
+          background-color: $main_color;
+          box-shadow: inset 0 0 0 4px #fff;
+        }
+      }
+    }
+    &:focus {
+      + .radio-label {
+        &:before {
+          outline: none;
+          border-color: $main_color;
+        }
+      }
+    }
+    &:disabled {
+      + .radio-label {
+        &:before {
+          border-color: darken(#f4f4f4, 25%);
+          background: darken(#f4f4f4, 25%);
+          box-shadow: inset 0 0 0 4px #f4f4f4;
+        }
+      }
+    }
+    + .radio-label {
+      &:empty {
+        &:before {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+// ======================================
+// チェックボックス
+// ======================================
+.l-checkbox {
+  &__wrap {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  &__input {
+    display: none;
+    &:checked {
+      & + .checkbox-parts {
+        // color: #d01137;
+        &:after {
+          content: "";
+          width: 8px;
+          height: 12px;
+          margin-top: -8px;
+          position: absolute;
+          top: 50%;
+          left: 5px;
+          display: block;
+          border-right: 3px solid $main_color;
+          border-bottom: 3px solid $main_color;
+          transform: rotate(40deg);
+        }
+      }
+    }
+  }
+
+  &__parts {
+    padding-left: 1.3rem;
+    position: relative;
+    &:before {
+      content: "";
+      width: 2.1rem;
+      height: 2.1rem;
+      margin-top: -9px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      border: 1px solid #707070;
+      border-radius: 50%;
+    }
+  }
+}
+
+
+// ======================================
+// フォームスタイル
+// ======================================
+.l-form {
+  &__area {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &__group {
+    &:not(:last-of-type) {
+      margin-bottom: 80px;
+    }
+  }
+
+  // 横並びフォーム
+  &__horizon {
+    .l-form__box {
+      display: flex;
+      align-items: stretch;
+      border-top: 1px dashed #707070;
+      &:last-of-type {
+        border-bottom: 1px dashed #707070;
+      }
+      dt {
+        width: 40%;
+        margin-right: 4.5rem;
+        padding: 2.5rem 0;
+        padding-top: 3.5rem;
+        position: relative;
+        flex: none;
+        .required {
+          position: absolute;
+          right: 0;
+        }
+      }
+      dd {
+        width: 100%;
+        padding: 2.5rem 0;
+        position: relative;
+      }
+    }
+    .horizontal-item {
+      margin-top: .5em;
+      display: inline-block;
+      + .horizontal-item {
+        margin-left: 6.5%;
+      }
+    }
+  }
+
+  // 縦並びフォーム
+  &__vertical {
+    .l-form__box {
+      dt {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__box {
+    // &:not(:last-child) {
+    //   margin-bottom: 20px;
+    // }
+    dt {
+      font-weight: 500;
+    }
+    .required {
+      padding: .5rem 1.9rem .6rem;
+      border-radius: .8rem;
+      background-color: $primary-color;
+      color: #fff;
+      letter-spacing: .05em;
+      font-size: 2.1rem;
+      line-height: 1;
+      &::before {
+        content: "必須";
+        line-height: 1;
+      }
+    }
+    .optional {
+      margin-left: 10px;
+      padding: 2px 6px;
+      background-color: #b5b5b5;
+      color: #fff;
+      font-size: 14px;
+      &::before {
+        content: "任意";
+      }
+    }
+    .error {
+      // display: none;
+      margin-top: .5em;
+      color: #d94e4e;
+      font-size: 13px;
+    }
+    .note {
+      margin-top: 1em;
+      color: #868585;
+    }
+  }
+
+  &__control {
+    width: 100%;
+    padding: 1.1rem .84em;
+    border: 1px solid #000;
+    border-radius: 1.0rem;
+    background-color: #fff;
+    font-size: 2.1rem;
+  }
+
+  &__checkbox {
+    margin-top: 5.0rem;
+    font-weight: 500;
+    font-size: 2.1rem;
+  }
+
+  &__textarea {
+    min-height: 26.0rem;
+    line-height: 1.86;
+  }
+
+  &__button-area {
+    margin-top: 4.0rem;
+    padding: 1.0rem 0;
+    display: flex;
+    justify-content: center;
+    > * {
+      + * {
+        margin-left: 10.0rem;
+      }
+    }
+  }
+}
+
+
+// .privacy-area {
+//   margin-top: 50px;
+//   .privacy-title {
+//     margin-bottom: 50px;
+//     font-size: 16px;
+//   }
+//   .doui {
+//     margin-top: 20px;
+//     text-align: center;
+//     position: relative;
+//     label {
+//       margin-left: 5px;
+//       font-weight: bold;
+//     }
+//   }
+//   .error {
+//     display: none;
+//     margin-top: 5px;
+//     color: $red;
+//     font-size: 12px;
+//   }
+// }

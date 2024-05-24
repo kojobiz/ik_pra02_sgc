@@ -1,0 +1,29 @@
+
+// ======================================
+// VW変換
+// ======================================
+$baseWindow: 325;
+@function vw($pixelsVw) {
+  @return $pixelsVw / $baseWindow * 100vw;
+}
+
+
+// ======================================
+// Safari用のハック（Chromeに適用されないようにする）
+// ======================================
+@supports (-webkit-touch-callout: none) {
+  #hero-visual {
+    /* Safari用のハック */
+    max-height: -webkit-fill-available;
+  }
+  .mod-video {
+    max-height: -webkit-fill-available;
+  }
+}
+
+// ======================================
+// スマホ以下のスタイル
+// ======================================
+
+@include mqSP {
+}

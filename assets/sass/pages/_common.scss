@@ -1,0 +1,621 @@
+
+// ======================================
+// HERO VISUAL
+// ======================================
+
+#hero-visual {
+  width: 100%;
+  height: 100vh;
+
+// max-height: 106.0rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.m-hero {
+  padding-top: 11.5rem;
+  background: url(../../images/home/bgimg_hero_pc.jpg) no-repeat bottom / cover;
+
+  &__inner {
+    width: 58.85%;
+  }
+
+  &__contents {
+    padding-left: 14%;
+  }
+
+  &__catch {
+    > * {
+      display: block;
+    }
+    &--title {
+      padding-bottom: 1.5rem;
+      position: relative;
+      color: $primary-color;
+      font-size: 3.4vw;
+      font-feature-settings: "palt";
+      line-height: calc(121 / 65);
+      &::after {
+        content: "";
+        width: calc(100% + 14%);
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+        left: -17%;
+        background-color: $primary-color;
+      }
+    }
+
+    &--lead {
+      margin-top: 3.0rem;
+      color: #183834;
+      font-weight: 500;
+      font-size: .83vw;
+      line-height: calc(40 / 16);
+    }
+  }
+
+  &__point {
+    margin-top: 3.0rem;
+    display: flex;
+    gap: 0 7.0rem;
+    justify-content: center;
+    li {
+      width: 9.5vw;
+    }
+  }
+
+  &__btngroup {
+    margin-top: 5.5rem;
+    display: flex;
+    gap: 0 2.0rem;
+    justify-content: center;
+    .l-btn__01 {
+      width: 24.4vw;
+      border-width: .52vw;
+      border-radius: 3.5vw;
+      > * {
+        font-size: 1.67vw;
+      }
+      small {
+        font-size: 1.2vw;
+      }
+    }
+  }
+}
+
+// ======================================
+// 時間のかかる業務作業AIにおまかせしませんか？
+// ======================================
+.m-lead {
+  .l-headline__01 {
+    margin-bottom: 6.0rem;
+  }
+  p {
+    + picture {
+      margin-top: 6.0rem;
+      display: block;
+    }
+  }
+}
+
+// ======================================
+// 選ばれる3つの理由
+// ======================================
+.m-reason {
+  padding-bottom: 15.0rem;
+  .l-headline__02 {
+    margin-bottom: 6.0rem;
+  }
+
+  &__list {
+    display: flex;
+    gap: 2.8rem 0;
+    flex-direction: column;
+    > li {
+      padding: 4.0rem 8.0rem;
+      border-radius: 1.5rem;
+      background-color: #fff;
+      &:first-child {
+        background-image: url(../../images/home/reason01.svg);
+        background-position: right .5rem center;
+        background-size: 20.5rem;
+      }
+      &:nth-child(2) {
+        background-image: url(../../images/home/reason02.svg);
+        background-position: right -3.5rem center;
+        background-size: 25.5rem;
+      }
+      &:nth-child(3) {
+        background-image: url(../../images/home/reason03.svg);
+        background-position: right 2.7rem center;
+        background-size: 18.0rem;
+      }
+    }
+
+    &--title {
+      margin-bottom: 2.5rem;
+      color: $primary-color;
+      font-size: 3.5rem;
+      line-height: calc(52 / 35);
+    }
+
+    &--text {
+      letter-spacing: .06em;
+      font-size: 1.6rem;
+      line-height: calc(30 / 16);
+    }
+  }
+}
+
+
+// ======================================
+// 資料請求・電話受付
+// ======================================
+.m-request {
+  padding-top: 15.4rem;
+  position: relative;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 18.0rem;
+    position: absolute;
+    top: -9.0rem;
+    left: 0;
+    background: url(../../images/line01.svg) no-repeat center / cover;
+  }
+
+  &__btngroup {
+    display: flex;
+    gap: 0 7.0rem;
+    justify-content: center;
+    + .m-request__tel {
+      margin-top: 4.0rem;
+    }
+  }
+
+  &__tel {
+    > * {
+      color: #30554c;
+      font-weight: 700;
+      font-size: 3.6rem;
+      line-height: 1;
+    }
+
+    &--num {
+      margin-left: 2.0rem;
+      color: #30554c;
+      font-size: 4.7rem;
+      &::before {
+        content: "";
+        width: 4.2rem;
+        height: 3.9rem;
+        margin-right: .8rem;
+        display: inline-block;
+        background: url(../../images/icon_phone.svg) no-repeat center / contain;
+      }
+    }
+
+    &--reception {
+      font-weight: 500;
+      font-size: 2.0rem;
+      line-height: calc(27 / 20);
+    }
+  }
+}
+
+
+// ======================================
+// 5つの機能
+// ======================================
+.m-function {
+  .l-headline__03 {
+    margin-bottom: 8.0rem;
+  }
+
+  &__point {
+    counter-reset: number 0;
+  }
+
+  &__column {
+    display: flex;
+    gap: 0 2% ;
+    justify-content: space-between;
+    + .m-function__column {
+      margin-top: 11.5rem;
+    }
+
+    > * {
+      width: 48%;
+    }
+
+    &.row-reverce {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__text {
+    &--title {
+      margin-bottom: 3.0rem;
+      padding-left: 2.0rem;
+      border-left: 1.0rem solid $primary-color;
+      color: #30554c;
+      font-weight: 700;
+      font-size: 4.5rem;
+      line-height: calc(60 / 45);
+      &::before {
+        content: "Point  " counter(number);
+        margin-bottom: .4em;
+        display: block;
+        color: $primary-color;
+        counter-increment: number 1;
+        font-weight: 500;
+        font-size: 4.2rem;
+
+// line-height: calc(62 / 42);
+        line-height: 1;
+      }
+    }
+
+    &--lead {
+      margin-bottom: 5.0rem;
+      letter-spacing: .05em;
+      line-height: calc(24 / 16);
+    }
+
+    &--list {
+      letter-spacing: .05em;
+      font-size: 2.0rem;
+    }
+  }
+
+  &__img {
+    position: relative;
+    picture {
+      display: block;
+    }
+  }
+
+  &__movie {
+    width: 72.4%;
+    position: absolute;
+    top: .5rem;
+    left: calc(50% - .2rem);
+    transform: translateX(-50%);
+
+    &--inner {
+      width: 100%;
+      background-color: #050000;
+
+      aspect-ratio: 1 / .64;
+    }
+
+    video {
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 2;
+      pointer-events: none;
+      object-fit: contain;
+    }
+  }
+}
+
+// ======================================
+// 導入実績
+// ======================================
+.m-results {
+  padding-bottom: 15rem;
+  .l-headline__02 {
+    margin-bottom: 10.0rem;
+  }
+
+  &__list {
+    display: flex;
+    gap: 2.0rem 2%;
+    flex-wrap: wrap;
+    li {
+      width: 23%;
+      border: 1px solid #ccc;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+// ======================================
+// 導入までの流れ
+// ======================================
+.m-flow {
+  .l-headline__02 {
+    margin-bottom: 8.0rem;
+  }
+
+  &__lead {
+    font-size: 2.3rem;
+    line-height: calc(38 / 23);
+  }
+
+  &__img {
+    margin-top: 8.0rem;
+    display: block;
+  }
+}
+
+// ======================================
+// 料金プラン
+// ======================================
+.m-plan {
+  .l-headline__02 {
+    margin-bottom: 8.0rem;
+  }
+
+  &__lead {
+    font-size: 2.3rem;
+    line-height: calc(38 / 23);
+  }
+
+  &__list {
+    margin-top: 8.0rem;
+
+    &--block {
+      padding: 1.7rem 5.0rem 1.7rem 6.0rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: solid 5px #9cbc3c;
+      border-radius: 1.5rem;
+      + .m-plan__list--block {
+        margin-top: 2.5rem;
+      }
+
+      &.blue {
+        position: relative;
+        border-color: #59b5d2;
+        &::after {
+          content: "";
+          width: 12.6rem;
+          height: 12.6rem;
+          position: absolute;
+          top: -7.0rem;
+          right: -6.25rem;
+          background: url(../../images/home/plan_img01.png) no-repeat center / contain;
+          transform: rotate(13deg);
+        }
+      }
+    }
+
+    &--title {
+      color: #9cbc3c;
+      letter-spacing: 0;
+      font-size: 3.6rem;
+      &.blue {
+        color: #59b5d2;
+        letter-spacing: .15em;
+      }
+    }
+
+    &--text {
+      letter-spacing: .05em;
+      font-size: 1.6rem;
+    }
+
+    &--cost {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color: #9cbc3c;
+      font-weight: 700;
+      &.blue {
+        color: #59b5d2;
+      }
+    }
+
+    &--price {
+      font-size: 5.1rem;
+    }
+
+    &--unit {
+      margin-left: 1.4rem;
+      font-size: 2.4rem;
+      > span {
+        display: block;
+        line-height: 1.2;
+      }
+
+      span {
+        &:first-child {
+          padding-left: .5em;
+        }
+      }
+    }
+
+    &--tax {
+      letter-spacing: .2em;
+    }
+  }
+
+  &__note {
+    margin-top: 2.5rem;
+    margin-left: 1em;
+    text-indent: -1em;
+    font-size: 1.6rem;
+    line-height: calc(25 / 16);
+    li {
+      &::before {
+        content: "※";
+      }
+      + li {
+        margin-top: .5rem;
+      }
+    }
+  }
+}
+
+// ======================================
+// 1週間の無料トライアルをご用意！導入後も安心のサポート
+// ======================================
+.m-support {
+  .l-headline__04 {
+    margin-bottom: 8.0rem;
+  }
+
+  &__column {
+    padding-bottom: 15.3rem;
+    position: relative;
+    display: flex;
+    gap: 0 13%;
+  }
+
+  &__block {
+    width: 43.5%;
+    margin-bottom: 13.2rem;
+    padding: 5.0rem 3.0rem;
+    position: relative;
+    position: relative;
+    border-width: 1.0rem;
+    border-style: solid;
+    border-radius: 2.0rem;
+    &::after {
+      content: "";
+      width: 12.1rem;
+      height: 11.5rem;
+      position: absolute;
+      bottom: -13.2rem;
+      left: calc(50% - 6.05rem);
+    }
+    &.orange {
+      border-color: #ffbd7b;
+      &::after {
+        background: url(../../images/home/orange_circle.svg) no-repeat center /contain;
+      }
+      .m-support__block--title {
+        color: $orange;
+      }
+    }
+    &.green {
+      border-color: #83dcbf;
+      &::after {
+        background: url(../../images/home/green_circle.svg) no-repeat center /contain;
+      }
+      .m-support__block--title {
+        color: #0caf79;
+      }
+    }
+
+    &--title {
+      margin-bottom: 2.0rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 3.0rem;
+      font-feature-settings: "palt";
+      line-height: calc(40 / 30);
+    }
+
+    &--text {
+      width: 88.8%;
+      margin: auto;
+      letter-spacing: .05em;
+      font-feature-settings: "palt";
+      line-height: calc(24 / 16);
+    }
+  }
+
+  &__img {
+    width: 53%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+// ======================================
+// よくあるご質問
+// ======================================
+.m-faq {
+  padding-bottom: 15.0rem;
+
+  .l-headline__02 {
+    margin-bottom: 5.0rem;
+  }
+
+  &__list {
+    width: 82.0rem;
+    max-width: 100%;
+    margin: auto;
+
+    &--block {
+      + .m-faq__list--block {
+        margin-top: 4.0rem;
+      }
+    }
+
+    &--q {
+      margin-bottom: 1.5rem;
+      position: relative;
+      color: #204d47;
+      font-weight: 700;
+      font-size: 2.5rem;
+      &::before {
+        content: "Q";
+        position: absolute;
+        top: -1.8rem;
+        left: 0;
+        z-index: 2;
+        font-size: 3.6rem;
+      }
+      span {
+        position: relative;
+        z-index: 1;
+        &::after {
+          content: "";
+          width: 100%;
+          height: 1.0rem;
+          position: absolute;
+          bottom: .1rem;
+          left: 0;
+          z-index: -1;
+          background-color: rgb(255,255,217);
+
+// background-color: #91ff00;
+          opacity: .57;
+
+          // mix-blend-mode: color-dodge;
+        }
+        &:first-child {
+          padding-left: calc(1em + 1.3rem);
+        }
+      }
+    }
+
+    &--a {
+      padding-left: 8.0rem;
+      position: relative;
+      &::before {
+        content: "";
+        width: 1.9rem;
+        height: 3.1rem;
+        position: absolute;
+        top: -1.2rem;
+        left: 1.4rem;
+        background: url(../../images/home/faq_a.svg) no-repeat center / contain;
+      }
+      p {
+        position: relative;
+        line-height: calc(24 / 16);
+        &::before {
+          content: "A";
+          position: absolute;
+          top: -1.5rem;
+          left: calc(-2.2rem - 1.3rem);
+          font-weight: 700;
+          font-size: 3.5rem;
+        }
+      }
+    }
+  }
+}

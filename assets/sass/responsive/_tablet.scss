@@ -1,0 +1,753 @@
+
+$baseWindow: 750;
+@function vw($pixelsVw) {
+  @return $pixelsVw / $baseWindow * 100vw;
+}
+
+//タブレット以下
+@include mqTAB {
+  html {
+    font-size: calc(1000vw/750) !important;
+  }
+
+  .fixed {
+    &::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      background-color: #000;
+      opacity: .5;
+    }
+
+    .m-header {
+      background-color: unset;
+      .m-header__title {
+        display: none;
+      }
+    }
+  }
+
+  // ======================================
+  // ヘッダー
+  // ======================================
+  .m-header {
+    padding: 1.7rem 3.4rem 1.5rem;
+
+    &__title {
+      img {
+        width: 38.2rem;
+      }
+    }
+
+    &__tel {
+      display: none;
+    }
+
+    &__navi {
+      padding-top: 6.4rem;
+      padding-bottom: 7.0rem;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 18.4%;
+      display: none;
+      overflow: scroll;
+      background-color: #fff;
+
+      ul {
+        margin-bottom: 5.0rem;
+        padding-left: 12.25rem;
+        display: block;
+        text-align: center;
+      }
+      li {
+        border-bottom: .3rem solid $primary-color;
+        text-align: left;
+        font-size: 2.7rem;
+        &:not(:first-child) {
+          margin-top: 1em;
+          margin-left: 0;
+        }
+        a {
+          padding-bottom: .8rem;
+          display: block;
+          line-height: calc(40 / 27);
+        }
+      }
+
+      &--logo {
+        width: 46.8rem;
+        margin: 0 auto 4.0rem;
+        display: block;
+      }
+
+      &--request {
+        display: block;
+      }
+    }
+  }
+
+  #hamburger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ======================================
+  // フッター
+  // ======================================
+  .m-footer {
+    &__inner {
+      padding-bottom: 2.0rem;
+    }
+
+    &__company {
+      padding-left: 0;
+      &--name {
+        margin-bottom: 1.5rem;
+      }
+
+      &--detail {
+        p {
+          font-size: 2.0rem;
+          line-height: calc(40 / 20);
+        }
+      }
+    }
+  }
+
+  // ======================================
+  // 共通スタイル
+  // ======================================
+  .l-main {
+    &__block {
+      width: 100%;
+      padding: 8.0rem 0;
+      position: relative;
+    }
+  }
+
+  // ======================================
+  // 見出し・タイトル
+  // ======================================
+  .l-headline {
+    &__01 {
+      font-weight: 500;
+      line-height: calc(50 / 34);
+      span {
+        display: block;
+      }
+      .f-lg {
+        margin-left: 0;
+        font-feature-settings: "palt";
+        line-height: calc(87 / 59);
+      }
+    }
+
+    &__04 {
+      span {
+        &::before {
+          bottom: 20%;
+          left: calc(-3.0rem - 7.0rem);
+        }
+        &::after {
+          right: calc(-3.0rem - 7.0rem);
+          bottom: 20%;
+        }
+      }
+    }
+  }
+
+  // ======================================
+  // ボタン関連
+  // ======================================
+  .l-btn {
+    &__side {
+      width: 50%;
+      &.btn-reques, &.btn-trial {
+        bottom: 0;
+      }
+      &.btn-reques {
+        left: 0;
+      }
+    }
+
+    &__link {
+      font-size: 2.0rem;
+    }
+
+    &__submit {
+      &.w-sm {
+        width: 26.8rem;
+        max-width: 100%;
+        box-shadow: 0 0 0 .3rem rgba(255, 255, 255, 1), 0 0 0 .6rem rgba(255, 128, 0, 1);
+      }
+    }
+  }
+
+  // ======================================
+  // フォームスタイル
+  // ======================================
+  .l-form {
+    // 横並びフォーム
+    &__horizon {
+      .l-form__box {
+        dt {
+          width: 38.7%;
+          margin-right: calc(42.6% - 38.7%);
+        }
+      }
+      .horizontal-item {
+        display: block;
+        + .horizontal-item {
+          margin-left: 0;
+        }
+        &:not(:first-of-type) {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &__box {
+      dt {
+        font-size: 2.2rem;
+      }
+      dd {
+        font-size: 2.2rem;
+      }
+    }
+
+    &__checkbox {
+      margin-top: 4.5rem;
+      font-size: 2.6rem;
+      .horizontal-item {
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 1;
+        }
+        input {
+          margin-right: 1.2rem;
+          transform: scale(1.6);
+        }
+      }
+    }
+
+    &__button-area {
+      margin-top: 5.0rem;
+      > * {
+        + * {
+          margin-left: 4.5rem;
+        }
+      }
+    }
+  }
+
+  // ======================================
+  // HERO VISUAL
+  // ======================================
+  #hero-visual {
+    height: 165.8rem;
+    display: block;
+  }
+
+  .m-hero {
+    padding-top: 9.6rem;
+    background: url(../../images/home/bgimg_hero_sp.jpg) no-repeat bottom / cover;
+
+    &__inner {
+      width: 100%;
+      padding: 4.3rem 6.3rem;
+    }
+
+    &__contents {
+      padding-left: 0;
+    }
+
+    &__catch {
+      &--title {
+        padding-bottom: 2.0rem;
+        font-size: 5.7rem;
+        line-height: calc(76 / 57);
+        &::after {
+          width: calc(100% + 6.3rem);
+          left: -6.3rem;
+        }
+      }
+
+      &--lead {
+        letter-spacing: .1em;
+        font-size: 2.0rem;
+        line-height: calc(40 / 20);
+      }
+    }
+
+    &__point {
+      gap: unset;
+      justify-content: space-between;
+      li {
+        width: 16.4rem;
+      }
+    }
+
+    &__btngroup {
+      gap: 2.5rem 0;
+      flex-direction: column;
+      .l-btn__01 {
+        width: 46.8rem;
+        max-width: 100%;
+        border-width: 1.0rem;
+        border-radius: 6.7rem;
+        > * {
+          font-size: 3.2rem;
+        }
+        small {
+          font-size: 2.3rem;
+        }
+      }
+    }
+  }
+
+  // ======================================
+  // 時間のかかる業務作業AIにおまかせしませんか？
+  // ======================================
+  .m-lead {
+    .l-headline__01 {
+      margin-bottom: 2.0rem;
+    }
+    p {
+      font-size: 2.7rem;
+      line-height: calc(45 / 27);
+      + picture {
+        margin-top: 4.0rem;
+      }
+    }
+  }
+
+  // ======================================
+  // 選ばれる3つの理由
+  // ======================================
+  .m-reason {
+    padding-bottom: 14.0rem;
+    .l-headline__02 {
+      margin-bottom: 5.0rem;
+    }
+
+    &__list {
+      gap: 2.5rem 0;
+
+      > li {
+        padding: 3.0rem 3.8rem;
+        &:first-child {
+          background-position: right -.5rem bottom -.3rem;
+          background-size: 16.6rem;
+        }
+        &:nth-child(2) {
+          background-position: right -7.0rem bottom -.8rem;
+          background-size: 24.0rem;
+        }
+        &:nth-child(3) {
+          background-position: right 2.0rem bottom -2.0rem;
+          background-size: 15.0rem;
+          .m-reason__list--title {
+            letter-spacing: -.04em;
+          }
+        }
+      }
+
+      &--title {
+        margin-bottom: 1.3rem;
+        font-feature-settings: "palt";
+      }
+
+      &--text {
+        letter-spacing: .03em;
+        font-size: 2.0rem;
+        line-height: calc(40 / 20);
+      }
+    }
+  }
+
+  // ======================================
+  // 資料請求・電話受付
+  // ======================================
+  .m-request {
+    padding-top: 15.0rem;
+    &::before {
+      background: url(../../images/line01_sp.svg) no-repeat center / cover;
+    }
+
+    &__btngroup {
+      gap: 3.0rem 0;
+      flex-direction: column;
+      + .m-request__tel {
+        margin-top: 3.0rem;
+      }
+    }
+
+    &__tel {
+      &--reception {
+        letter-spacing: .035em;
+        font-size: 2.5rem;
+        line-height: calc(27 / 25);
+      }
+    }
+  }
+
+  // ======================================
+  // 5つの機能
+  // ======================================
+  .m-function {
+    .l-headline__03 {
+      margin-bottom: 7.0rem;
+    }
+
+    &__column {
+      gap: 0;
+      flex-direction: column;
+      + .m-function__column {
+        margin-top: 5.5rem;
+      }
+
+      > * {
+        width: 100%;
+      }
+
+      &.row-reverce {
+        flex-direction: column;
+      }
+    }
+
+    &__text {
+      &--title {
+        margin-bottom: 2.0rem;
+      }
+
+      &--lead {
+        margin-bottom: 2.0rem;
+        letter-spacing: .1em;
+        font-size: 2.0rem;
+        line-height: calc(40 / 20);
+      }
+
+      &--list {
+        font-size: 2.3rem;
+        line-height: calc(40 / 23);
+        &.pc_only {
+          display: none;
+        }
+      }
+    }
+
+    &__img {
+      picture, figure {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    // &__movie {
+    //   &--inner {
+    //     padding-top: 65%;
+    //   }
+    // }
+  }
+
+  // ======================================
+  // 導入実績
+  // ======================================
+  .m-results {
+    padding-bottom: 14rem;
+    .l-headline__02 {
+      margin-bottom: 7.0rem;
+    }
+
+    &__list {
+      li {
+        width: 49%;
+      }
+    }
+  }
+
+  // ======================================
+  // 導入までの流れ
+  // ======================================
+  .m-flow {
+    .l-headline__02 {
+      margin-bottom: 6.0rem;
+    }
+
+    &__lead {
+      font-size: 2.7rem;
+      line-height: calc(45 / 27);
+    }
+
+    &__img {
+      margin-top: 5.5rem;
+    }
+  }
+
+  // ======================================
+  // 料金プラン
+  // ======================================
+  .m-plan {
+    padding-top: 0;
+    .l-headline__02 {
+      margin-bottom: 6.0rem;
+    }
+
+    &__lead {
+      font-size: 2.7rem;
+      line-height: calc(45 / 27);
+    }
+
+    &__list {
+      &--block {
+        padding: 2.4rem 4.0rem;
+        display: block;
+        text-align: center;
+
+        &.blue {
+          &::after {
+            width: 13.4rem;
+            height: 13.4rem;
+            top: -3.6rem;
+            right: 1.0rem;
+          }
+        }
+      }
+
+      &--title {
+        margin-bottom: 2.0rem;
+      }
+
+      &--text {
+        margin-bottom: 1.0rem;
+        letter-spacing: 0;
+        font-size: 2.7rem;
+      }
+
+      &--cost {
+        justify-content: center;
+      }
+
+      &--price {
+        font-size: 6.3rem;
+      }
+
+      &--unit {
+        text-align: left;
+        font-size: 2.9rem;
+      }
+    }
+
+    &__note {
+      letter-spacing: .1em;
+      font-size: 2.0rem;
+      li {
+        + li {
+          margin-top: 1.0rem;
+        }
+      }
+    }
+  }
+  // ======================================
+  // 1週間の無料トライアルをご用意！導入後も安心のサポート
+  // ======================================
+  .m-support {
+    padding-top: 0;
+    .l-headline__04 {
+      margin-bottom: 6.0rem;
+    }
+
+    &__column {
+      padding-bottom: 47.0rem;
+      gap: 0 4%;
+    }
+
+    &__block {
+      width: 48%;
+      margin-bottom: 12.5rem;
+      padding: 2.3rem 4.0rem;
+      &::after {
+        width: 9.1rem;
+        height: 11.5rem;
+        bottom: -13.5rem;
+        left: calc(50% - 4.55rem);
+      }
+      &.orange {
+        &::after {
+          background: url(../../images/home/orange_circle_sp.svg) no-repeat center /contain;
+        }
+      }
+      &.green {
+        &::after {
+          background: url(../../images/home/green_circle_sp.svg) no-repeat center /contain;
+        }
+      }
+
+      &--text {
+        width: 100%;
+        letter-spacing: .01em;
+        font-size: 2.0rem;
+        line-height: calc(40 / 20);
+      }
+    }
+
+    &__img {
+      width: calc(100% + 6.0rem );
+      z-index: -1;
+    }
+  }
+
+  // ======================================
+  // よくあるご質問
+  // ======================================
+  .m-faq {
+    padding-bottom: 14.0rem;
+
+    &__list {
+      &--block {
+        + .m-faq__list--block {
+          margin-top: 3.0rem;
+        }
+      }
+
+      &--q {
+        height: 8.0rem;
+        margin-bottom: 3.0rem;
+        font-size: 2.7rem;
+        line-height: calc(40 / 27);
+        &::before {
+          font-size: 3.9rem;
+        }
+        span {
+          display: inline-block;
+          &:nth-child(2) {
+            margin-left: calc(1em + 1.3rem);
+          }
+          &::after {
+            bottom: .3rem;
+          }
+        }
+      }
+
+      &--a {
+        &::before {
+          width: 2.1rem;
+          height: 8.6rem;
+          position: absolute;
+          top: -6.0rem;
+          left: 1.0rem;
+          background: url(../../images/home/faq_a_sp.svg) no-repeat center / contain;
+        }
+        p {
+          font-size: 2.0rem;
+          line-height: calc(40 / 20);
+          &::before {
+            top: -2.0rem;
+            left: calc(-2.2rem - 1.3rem);
+            font-size: 3.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  // ======================================
+  // お申し込みフォーム
+  // ======================================
+  .m-breadcrumb {
+    margin-top: 2.0rem;
+    margin-bottom: 0;
+  }
+  .m-form {
+    .l-form__box {
+      font-size: 2.2rem;
+    }
+
+    &__lead {
+      font-size: 2.7rem;
+      line-height: calc(45 / 27);
+    }
+
+    &__tel {
+      padding: 3.5rem 4.0rem;
+
+      &--title {
+        margin-bottom: 1.0rem;
+        font-size: 2.7rem;
+        line-height: 1.3;
+      }
+
+      dd {
+        > * {
+          line-height: 1.2;
+          + * {
+            margin-left: 0;
+          }
+        }
+      }
+
+      &--num {
+        font-size: 7.5rem;
+        font-feature-settings: "palt";
+        line-height: calc(90 / 75);
+        &::before {
+          width: 6.3rem;
+          height: 5.8rem;
+          margin-right: .5rem;
+        }
+      }
+
+      &--reception {
+        font-size: 2.3rem;
+      }
+    }
+
+    &__link {
+      padding-top: 4.5rem;
+      a {
+        + a {
+          margin-left: 15.5rem;
+        }
+      }
+    }
+
+    &__message {
+      font-size: 2.4rem;
+    }
+  }
+  // ======================================
+  // お申し込みフォーム(確認）
+  // ======================================
+  .confirm {
+    .m-form {
+      .l-form__box {
+        dt, dd {
+          padding: 3.0rem;
+          font-size: 2.0rem;
+        }
+
+        dt {
+          width: 30.6%;
+        }
+      }
+    }
+
+    .l-btn__submit {
+      width: 26.8rem;
+      max-width: 100%;
+      box-shadow: 0 0 0 .3rem rgba(255, 255, 255, 1), 0 0 0 .6rem rgba(255, 128, 0, 1);
+      &.dark {
+        background-color: #8f8f8f;
+        box-shadow: 0 0 0 .3rem rgba(255, 255, 255, 1), 0 0 0 .6rem rgba(143, 143, 143, 1);
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+// PC用
+@media screen and (max-width: 1250px) {
+  // ======================================
+  // ヘッダー
+  // ======================================
+  .m-header {
+    padding-right: 3.4rem;
+    padding-left: 3.4rem;
+    &__navi {
+      ul {
+        gap: 0 2.0rem;
+      }
+    }
+  }
+}

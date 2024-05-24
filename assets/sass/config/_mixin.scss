@@ -1,0 +1,337 @@
+
+// ======================================
+// ブレークポイント
+// ======================================
+
+// 広いPC以上専用スタイル
+@mixin mqPCL {
+  @media (min-width: ($widthPC + 1)) {
+    @content;
+  }
+}
+// 狭いPC専用(＆横置きタブレット)スタイル
+@mixin mqPCS {
+  @media (min-width: $widthTAB) and (max-width: ($widthPC)) {
+    @content;
+  }
+}
+// PC専用（タブレット以上）
+@mixin mqPC {
+  @media (min-width: $widthTAB) {
+    @content;
+  }
+}
+// タブレット以下
+@mixin mqTAB {
+  @media (max-width: ($widthTAB - 1)) {
+    @content;
+  }
+}
+// スマートフォン以下
+@mixin mqSP {
+  @media (max-width: ($widthSP - 1)) {
+    @content;
+  }
+}
+
+
+// =======================================================
+// 
+// フォントサイズ  @include fontsize(12);
+// リンクカラー @include link-color(#333333);
+// 角丸 @include border-radius(5px);
+// 透明度 opacity  @include opacity(.75);
+// トランジション  @include transition(0.5s);
+// メディアクエリ PCのみ         @include mq(medium)
+// メディアクエリ タブレット以下   @include mq(medium, max, true)
+// メディアクエリ スマホ以下      @include mq(small, max, true)
+// フレックスボックス  @include flexbox();
+// 
+// =======================================================
+
+//フォントサイズ px＆rem
+//呼び出し例：@include fontsize(12);
+@mixin fontsize($size: 24, $base: 10) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+
+//トランジション定義 @include transition(0.5s);
+@mixin transition($duration:0.5s) {
+  -webkit-transition: $duration ease-out;
+  -moz-transition: $duration ease-out;
+  -ms-transition: $duration ease-out;
+  -o-transition: $duration ease-out;
+  transition: $duration ease-out;
+}
+
+//テキストを消す @include hide-text;
+@mixin hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+//clearfix
+//呼び出し例 @extend %clearfix;
+@mixin cf {
+  *zoom: 1;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+%clearfix {
+  @include cf;
+}
+
+//疑似要素 :before, :after
+%bfaf {
+  position: absolute;
+  display: block;
+  content: "";
+}
+@mixin bfaf {
+  @extend %bfaf;
+}
+
+//テキストリンクスタイル定義
+@mixin link-color-dark($color) {
+  color: $color;
+  &:hover, &:active, &:focus {
+    color: lighten($color, 20%);
+  }
+}
+@mixin link-color-light($color) {
+  color: $color;
+  &:hover, &:active, &:focus {
+    color: darken($color, 20%);
+  }
+}
+
+@mixin txt_link($style) {
+  color: $link_color;
+  &:link {
+    color: $unvisited_color;
+  }
+  &:visited {
+    //olor: $visited_color;
+  }
+  &:hover {
+    color: $hover_color;
+  }
+  &:active {
+    color: $active_color;
+  }
+  //例 @include txt_link(linkLine);    常に下線あり
+  @if $style == linkLine {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  //例 @include txt_link(hoverLine);   hover時に下線あり
+  @else if $style == hoverLine {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  //例 @include txt_link(noLine);  常に下線なし
+  @else if $style == noLine {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
+//circle（円形）描写定義
+//呼び出し例：@include circle(100px);
+@mixin circle($size:40px) {
+  width: $size;
+  height: $size;
+  border-radius: 100%;
+}
+//透明度の定義
+//呼び出し例：@include opacity(0.5);
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacityIE: $opacity * 100;
+  filter:alpha(opacity=$opacityIE);
+}
+//border-radius（角丸）定義
+//呼び出し例：@include border-radius(5px);
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+//box-sizing（ボックスサイズ）定義
+//呼び出し例：@include box-sizing(border-box);
+@mixin box-sizing($type) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  box-sizing: $type;
+}
+//box-shadow（ボックスシャドウ）定義
+//呼び出し例：@include box-shadow(8px, 8px);
+@mixin box-shadow( $h: 10px, $v: 10px, $b: 0px, $s: 0px, $c: #000000 ) {
+  -webkit-box-shadow: $h $v $b $s $c;
+  -moz-box-shadow: $h $v $b $s $c;
+  box-shadow: $h $v $b $s $c;
+}
+//vertical-align（天地の中央に配置）定義
+//呼び出し例：@include vertical-align();
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+//flexbox（フレックスボックス）定義
+//呼び出し例：@include flexbox();
+@mixin flexbox {
+  display: -webkit-box; // old
+  display: -moz-box; // old
+  display: -ms-flexbox; // ie
+  display: -webkit-flex; // new
+  display: flex; // new
+}
+@mixin flex-direction($direction) {
+  //並び順。rowなら左から右へ。
+  //row-reverseなら右から左へ。
+  //columnなら上から下へ。
+  //column-reverseなら下から上へ。
+  -webkit-flex-direction: $direction;
+     -moz-flex-direction: $direction;
+      -ms-flex-direction: $direction;
+          flex-direction: $direction;
+}
+@mixin flex-wrap($wrap) {
+  //flexアイテムの行指定。
+  //nowrapは横一列。
+  //wrapは複数行。
+  //wrap-reverseは逆配置の複数行
+  -webkit-flex-wrap: $wrap;
+     -moz-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+@mixin justify-content($justify) {
+  //flexアイテムの配置。
+  //flex-startは左側から。
+  //flex-endは右側から。
+  //centerは中央配置。
+  //space-betweenは最初と最後は両端で残りは等間隔。
+  //space-aroundはすべて等間隔。
+  -webkit-justify-content: $justify;
+     -moz-justify-content: $justify;
+      -ms-justify-content: $justify;
+          justify-content: $justify;
+            -ms-flex-pack: $justify;
+}
+@mixin align-items($align) {
+  //flexアイテムの垂直方向。
+  //stretchは高さいっぱい。
+  //flex-startはコンテナの左上から。
+  //flex-endはコンテナの左下から。
+  //centerはコンテナの高さの中央で。
+  //baselineはflexアイテム内のベースラインに沿って。
+  -webkit-align-items: $align;
+     -moz-align-items: $align;
+      -ms-align-items: $align;
+          align-items: $align;
+}
+@mixin align-content($align) {
+  //flexアイテムの垂直方向揃え。
+  //stretchは右上から均等分配。
+  //flex-endは右上からコンテナの上に揃って積み重なる。
+  //flex-endは右上からコンテナの下にそろって積み重なる。
+  //centerはコンテナの中央を中心に積み重なる。
+  //space-betweenはコンテナの始点から終点に均等配置。
+  //space-aroundは全ての行の周りに均等配置。
+  -webkit-align-content: $align;
+     -moz-align-content: $align;
+      -ms-align-content: $align;
+          align-content: $align;
+}
+
+//グラデーション（水平・垂直・円形）
+//呼び出し例：@include gradient(#ff00ff, #ff00cc, vertical);
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == vertical {
+    // vertical
+    background: -moz-linear-gradient(top, $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));
+    background: -webkit-linear-gradient(top, $start-color 0%,$end-color 100%);
+    background: -o-linear-gradient(top, $start-color 0%,$end-color 100%);
+    background: -ms-linear-gradient(top, $start-color 0%,$end-color 100%);
+    background: linear-gradient(to bottom, $start-color 0%,$end-color 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 );
+  }
+  @else if $orientation == horizontal {
+    // horizontal
+    background: -moz-linear-gradient(left, $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$start-color), color-stop(100%,$end-color));
+    background: -webkit-linear-gradient(left, $start-color 0%,$end-color 100%);
+    background: -o-linear-gradient(left, $start-color 0%,$end-color 100%);
+    background: -ms-linear-gradient(left, $start-color 0%,$end-color 100%);
+    background: linear-gradient(to right, $start-color 0%,$end-color 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+  }
+  @else {
+    // radial
+    background: -moz-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$start-color), color-stop(100%,$end-color));
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color 0%,$end-color 100%);
+    background: -o-radial-gradient(center, ellipse cover, $start-color 0%,$end-color 100%);
+    background: -ms-radial-gradient(center, ellipse cover, $start-color 0%,$end-color 100%);
+    background: radial-gradient(ellipse at center, $start-color 0%,$end-color 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+  }
+}
+
+//clearfix
+//呼び出し例：@include clearfix;
+@mixin clearfix{
+  *zoom: 1;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+//透明度
+//呼び出し例：@include opacity(.75);
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: alpha(opacity=$opacity-ie);
+}
+
+//メディアクエリ設定
+$mq-breakpoints: (
+  'small': $widthSP,
+  'medium' : $widthTAB,
+  'large': $widthPC,
+);
+
+@mixin mq($breakpoint: medium, $rule: min, $subtraction: false) {
+  $breakpoint: map_get($mq-breakpoints, $breakpoint);
+  @if $rule == max and $subtraction {
+    $breakpoint: $breakpoint - 1;
+  }
+  @media screen and (#{$rule}-width: $breakpoint) {
+    @content;
+  }
+}
